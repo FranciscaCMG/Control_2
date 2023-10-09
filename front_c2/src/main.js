@@ -6,6 +6,8 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+import VueCookies from 'vue-cookies'
+
 
 // Import Bootstrap and BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -16,6 +18,9 @@ Vue.use(VueAxios, axios)
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
+
+Vue.use(VueCookies)
+axios.defaults.withCredentials = true;
 
 Vue.config.productionTip = false
 

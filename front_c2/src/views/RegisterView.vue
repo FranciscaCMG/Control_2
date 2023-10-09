@@ -35,13 +35,13 @@ export default {
   methods: {
     register() {
       let json = {
-      "rut" : this.rut,
-      "nombres" : this.nombres,
-      "apellidos" : this.apellidos,
-      "email" : this.email,
-      "pass" : this.pass
+        "rut": this.rut,
+        "nombres": this.nombres,
+        "apellidos": this.apellidos,
+        "email": this.email,
+        "pass": this.pass
       };
-      axios.post("http://localhost:8086/usuario", json)
+      axios.post("http://localhost:8086/login", json)
         .then(response => {
           console.log(response.data);
         })
@@ -54,5 +54,4 @@ export default {
 
 </script>
 
-<style>
-</style>
+<style></style>

@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
+
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +23,7 @@ public class TareaImp implements TareaRepository{
             String sql = "INSERT INTO Tarea(id_tarea, titulo, descripcion, fechaCreacion, fechaFin, estado, prioridad, rut)" +
                     "VALUES (:id_tarea, :titulo, :descripcion, :fechaCreacion, :fechaFin, :estado, :prioridad, :rut)";
             conn.createQuery(sql, true)
-                    .addParameter("id_tarea", String.valueOf(tarea.getId_tarea()))
+                    .addParameter("id_tarea", Integer.valueOf(tarea.getId_tarea()))
                     .addParameter("titulo", tarea.getTitulo())
                     .addParameter("descripcion", tarea.getDescripcion())
                     .addParameter("fechaCreacion", tarea.getFechaCreacion())
@@ -50,7 +52,7 @@ public class TareaImp implements TareaRepository{
 
     @Override
     public Tarea update(Tarea tarea, int id_tarea, String titulo, String descripcion,
-                        Date fechaFin, String estado, String prioridad) {
+                        String fechaFin, String estado, String prioridad) {
         try (Connection conn = sql2o.open()) {
             conn.createQuery("UPDATE Tarea " +
                             "SET titulo=:titulo, descripcion=:descripcion, fechaFin=:fechaFin, " +
@@ -84,11 +86,11 @@ public class TareaImp implements TareaRepository{
     }
 
     @Override
-    public List<Tarea> findEstado(int id_tarea, Date fechaCreacion) {
+    public List<Tarea> findEstado(int id_tarea, String estado) {
         try (Connection conn = sql2o.open()) {
-            return conn.createQuery("SELECT * FROM Tarea WHERE id_tarea=:id_tarea AND fechaCreacion=:fechaCreacion")
+            return conn.createQuery("SELECT * FROM Tarea WHERE id_tarea=:id_tarea AND estado=:estado")
                     .addParameter("id_tarea", id_tarea)
-                    .addParameter("fechaCreacion", fechaCreacion)
+                    .addParameter("estado", estado)
                     .executeAndFetch(Tarea.class);
         } catch (Exception e) {
             System.out.println(e.getMessage());

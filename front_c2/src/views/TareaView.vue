@@ -7,8 +7,9 @@
         <form v-on:submit.right="newTarea">
           <input type="text" id="titulo" class="fadeIn second" name="tarea" placeholder="Titulo de la Tarea" v-model="titulo">
           <input type="text" id="descripcion" class="fadeIn second" name="tarea" placeholder="Descripcion" v-model="descripcion">
-          <input type="Date" id="fechaCreacion" class="fadeIn second" name="tarea" placeholder="Fecha de Inicio" v-model="fechaCreacion">
-          <input type="Date" id="fechaFin" class="fadeIn third" name="tarea" placeholder="Fecha de Fin" v-model="fechaFin">
+          <input type="text" id="fechaCreacion" class="fadeIn second" name="tarea" placeholder="Fecha de Inicio" v-model="fechaCreacion">
+          <input type="text" id="fechaFin" class="fadeIn third" name="tarea" placeholder="Fecha de Fin" v-model="fechaFin">
+          <input type="text" id="prioridad" class="fadeIn third" name="tarea" placeholder="Prioridad" v-model="prioridad">
           <input type="submit" class="fadeIn fourth" value="Crear Tarea">
         </form>
       </div>
@@ -27,7 +28,9 @@ export default {
         descripcion: '',
         fechaCreacion: '',
         fechaFin: '',
-        estado: 'Sin terminar',
+        estado: '',
+        prioridad: '',
+        rut: ''
       },
     }
   },
@@ -38,8 +41,9 @@ export default {
       "descripcion" : this.descripcion,
       "fechaCreacion" : this.fechaCreacion,
       "fechaFin" : this.fechaFin,
-      "estado" : this.estado,
-      "rut" : null 
+      "estado" : 'En curso',
+      "prioridad" : this.prioridad,
+      "rut" : '25100345-9' 
       };
       axios.post("http://localhost:8086/tarea", json)
         .then(response => {
