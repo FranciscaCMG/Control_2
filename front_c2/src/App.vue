@@ -5,6 +5,11 @@
   </div>
 </template>
 
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
+</script>
+
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

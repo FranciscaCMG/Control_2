@@ -5,11 +5,11 @@
       <!-- Icon -->
       <!-- Login Form -->
       <form v-on:submit.right="register">
-        <input type="text" id="rut" class="fadeIn second" name="rut" placeholder="Rut" v-model="rut">
-        <input type="text" id="nombres" class="fadeIn second" name="nombres" placeholder="Nombres" v-model="nombres">
-        <input type="text" id="apellidos" class="fadeIn second" name="apellidos" placeholder="Apellidos" v-model="apellidos">
-        <input type="text" id="email" class="fadeIn second" name="correo" placeholder="Correo" v-model="email">
-        <input type="text" id="password" class="fadeIn third" name="contraseña" placeholder="Contraseña" v-model="pass">
+        <input type="text" id="rut" class="fadeIn second" name="rut" placeholder="Rut" v-model="nuevoUsuario.rut">
+        <input type="text" id="nombres" class="fadeIn second" name="nombres" placeholder="Nombres" v-model="nuevoUsuario.nombres">
+        <input type="text" id="apellidos" class="fadeIn second" name="apellidos" placeholder="Apellidos" v-model="nuevoUsuario.apellidos">
+        <input type="text" id="email" class="fadeIn second" name="correo" placeholder="Correo" v-model="nuevoUsuario.email">
+        <input type="text" id="password" class="fadeIn third" name="contraseña" placeholder="Contraseña" v-model="nuevoUsuario.pass">
         <input type="submit" class="fadeIn fourth" value="Enviar">
       </form>
     </div>
@@ -34,23 +34,24 @@ export default {
   },
   methods: {
     register() {
-      let json = {
-        "rut": this.rut,
-        "nombres": this.nombres,
-        "apellidos": this.apellidos,
-        "email": this.email,
-        "pass": this.pass
-      };
-      axios.post("http://localhost:8086/usuario", json)
-        .then(response => {
-          console.log(response.data);
-        })
-        .catch(error => {
-          console.error(error);
-        });
+      
+  axios.post("http://localhost:8086/usuario", {
+    "rut": this.nuevoUsuario.rut,
+    "nombres": this.nuevoUsuario.nombres,
+    "apellidos": this.nuevoUsuario.apellidos,
+    "email": this.nuevoUsuario.email,
+    "pass": this.nuevoUsuario.pass
+  })
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}
     }
   }
-}
+
 
 </script>
 
