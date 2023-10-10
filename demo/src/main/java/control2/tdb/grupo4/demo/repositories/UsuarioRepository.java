@@ -5,7 +5,7 @@ import  java.util.List;
 
 public interface UsuarioRepository {
 
-    public Usuario newUsuario(Usuario usuario);
+    public void newUsuario(Usuario usuario);
 
     public boolean validaUsuario(String email, String pass);
 

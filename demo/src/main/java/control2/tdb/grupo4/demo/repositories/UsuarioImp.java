@@ -15,7 +15,7 @@ public class UsuarioImp implements UsuarioRepository{
     private Sql2o sql2o;
 
     @Override
-    public Usuario newUsuario(Usuario usuario) {
+    public void newUsuario(Usuario usuario) {
         try (Connection conn = sql2o.open()) {
             String sql = "INSERT INTO  Usuario(rut, nombres, apellidos, email, pass)" +
                     "VALUES (:rut,:nombres,:apellidos,:email,:pass)";
@@ -26,10 +26,8 @@ public class UsuarioImp implements UsuarioRepository{
                     .addParameter("email", usuario.getEmail())
                     .addParameter("pass", usuario.getPass())
                     .executeUpdate();
-            return usuario;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return null;
         }
     }
 

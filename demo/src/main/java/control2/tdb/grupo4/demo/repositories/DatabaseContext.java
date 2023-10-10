@@ -10,11 +10,12 @@ public class DatabaseContext {
     @Value("jdbc:postgresql://localhost:5432/hola")
     private String dbUrl;
 
-    @Value("postgres")
+    @Value("${database.user}")
     private String dbUser;
 
-    @Value("hola123")
+    @Value("${database.password}")
     private String dbPass;
+
 
     @Bean
     public Sql2o sql2o() {return new Sql2o(dbUrl, dbUser, dbPass);}
