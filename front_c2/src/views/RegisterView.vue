@@ -4,7 +4,7 @@
       <!-- Tabs Titles -->
       <!-- Icon -->
       <!-- Login Form -->
-      <form v-on:submit.right="register">
+      <form v-on:submit.prevent ="register" method = "post">
         <input type="text" id="rut" class="fadeIn second" name="rut" placeholder="Rut" v-model="nuevoUsuario.rut">
         <input type="text" id="nombres" class="fadeIn second" name="nombres" placeholder="Nombres" v-model="nuevoUsuario.nombres">
         <input type="text" id="apellidos" class="fadeIn second" name="apellidos" placeholder="Apellidos" v-model="nuevoUsuario.apellidos">
@@ -34,7 +34,6 @@ export default {
   },
   methods: {
     register() {
-      
   axios.post("http://localhost:8086/usuario", {
     "rut": this.nuevoUsuario.rut,
     "nombres": this.nuevoUsuario.nombres,
