@@ -15,7 +15,7 @@ public class UsuarioController {
     @Autowired
     UsuarioService usuarioService;
 
-    @PostMapping(value = "/usuario")
+    @PostMapping(value = "/register")
     public ResponseEntity  crearUsuario( @RequestBody Usuario usuario ) {
         try{
             usuarioService.crearUsuario(usuario);
@@ -28,8 +28,22 @@ public class UsuarioController {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
+
+    @PostMapping(value = "/login")
+    public ResponseEntity login( @RequestParam String correo, @RequestParam String pass ) {
+        try{
+            usuarioService.login(correo,pass);
+            return ResponseEntity.ok(null);
+        }
+        catch (IllegalArgumentException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+        catch (RuntimeException e) {
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
+    }
     @GetMapping("/usuarios")
-    public ResponseEntity<List<Usuario>> getAllVoluntarios(){
+    public ResponseEntity<List<Usuario>> getAllUsuarios(){
         return ResponseEntity.ok(usuarioService.getAllUsuarios());
     }
 

@@ -12,8 +12,6 @@ import java.util.List;
 
 
 
-
-
 @Service
 public class UsuarioService {
     @Autowired
@@ -21,8 +19,14 @@ public class UsuarioService {
     public void crearUsuario(Usuario usuario){
         usuarioRepository.newUsuario(usuario);
     }
+
+    public void login(String correo, String pass){
+        usuarioRepository.validaUsuario(correo,pass);
+    }
+
     public List<Usuario> getAllUsuarios() {
         return usuarioRepository.getAll();
     }
+
 
 }
