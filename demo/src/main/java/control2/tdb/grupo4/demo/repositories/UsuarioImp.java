@@ -34,16 +34,17 @@ public class UsuarioImp implements UsuarioRepository{
     @Override
     public boolean validaUsuario(String email, String pass) {
         try (Connection conn = sql2o.open()) {
-            String sql = "SELECT * FROM Usuario WHERE email =: email AND pass =: pass";
+            String sql = "SELECT * FROM Usuario WHERE email = :email AND pass = :pass";
             conn.createQuery(sql, true)
                     .addParameter("email", email)
                     .addParameter("pass", pass);
-            return true; //si el usuario existe retorna true
+            return true; // if the user exists, return true
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return false;
         }
     }
+
     @Override
     public List<Usuario> getAll(){
         try(Connection conn = sql2o.open()){

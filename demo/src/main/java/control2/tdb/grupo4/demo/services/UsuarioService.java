@@ -20,8 +20,8 @@ public class UsuarioService {
         usuarioRepository.newUsuario(usuario);
     }
 
-    public void login(String correo, String pass){
-        usuarioRepository.validaUsuario(correo,pass);
+    public void login(Usuario usuario){
+        usuarioRepository.validaUsuario(usuario.getEmail(), usuario.getPass());
     }
 
     public List<Usuario> getAllUsuarios() {

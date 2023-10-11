@@ -30,9 +30,9 @@ public class UsuarioController {
     }
 
     @PostMapping(value = "/login")
-    public ResponseEntity login( @RequestParam String correo, @RequestParam String pass ) {
+    public ResponseEntity login( @RequestBody Usuario usuario ) {
         try{
-            usuarioService.login(correo,pass);
+            usuarioService.login(usuario);
             return ResponseEntity.ok(null);
         }
         catch (IllegalArgumentException e){
