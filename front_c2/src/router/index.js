@@ -6,8 +6,8 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/register',
-    name: 'register',
+    path: '/usuario',
+    name: 'usuario',
     component: () => import('../views/RegisterView.vue')
   },
   {
@@ -16,10 +16,22 @@ const routes = [
     component: () => import('../views/TareaView.vue')
   },
   {
+    path: '/tareas',
+    name: 'tareas',
+    component: () => import('../views/TareasAllView.vue')
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import('../views/LoginView.vue')
   },
+  {
+    
+    path: '/editar-tarea/:id',
+    name: 'editar-tarea',
+    component: () => import('../views/EditarTarea.vue')
+  },
+
   {
     path: '/about',
     name: 'about',
@@ -27,14 +39,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  },
-  
-  {
-    path: '/tareas',
-    name: 'tareas',
-    component: () => import('../views/TareasAllView.vue')
-  },
-  
+  }
 ]
 
 const router = new VueRouter({
@@ -42,5 +47,6 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
 
 export default router

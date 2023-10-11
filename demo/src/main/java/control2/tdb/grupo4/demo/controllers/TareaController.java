@@ -28,6 +28,19 @@ public class TareaController {
         }
     }
 
+    @PostMapping("/edit-tarea/{id}")
+    public ResponseEntity update( @RequestParam int id,@RequestBody Tarea tarea ){
+        try {
+        tareaService.update(tarea, id);
+        return ResponseEntity.ok(null);
+    }
+        catch (IllegalArgumentException e){
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+        catch (RuntimeException e) {
+        return ResponseEntity.internalServerError().body(e.getMessage());
+    }
+}
     @GetMapping("/tarea")
     public ResponseEntity<List<Tarea>> verTareas(){
         return ResponseEntity.ok((tareaService.verTareas()));

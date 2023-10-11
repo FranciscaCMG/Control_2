@@ -58,8 +58,10 @@ export default {
         "prioridad": this.newTarea.prioridad,
         "rut": "123"
       })
+      this.$router.push('/tareas')
         .then(response => {
           console.log(response.data);
+          
         })
         .catch(error => {
           console.error(error);

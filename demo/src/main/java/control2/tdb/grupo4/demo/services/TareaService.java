@@ -20,4 +20,6 @@ public class TareaService {
     public List<Tarea> verTareas(){
         return tareaRepository.getAll();
     }
+
+    public Tarea update(Tarea tarea, int id){return tareaRepository.update(tarea,id);}
 }

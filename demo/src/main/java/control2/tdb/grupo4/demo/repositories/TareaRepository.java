@@ -12,8 +12,7 @@ public interface TareaRepository {
 
     public List<Tarea> getAll();
 
-    public Tarea update(Tarea tarea, int id_tarea, String titulo, String descripcion,
-                        String fechaFin, String estado, String prioridad);
+    public Tarea update(Tarea tarea, int id);
 
     public List<Tarea> findTitulo(int id_tarea, String titulo);
 
