@@ -53,9 +53,9 @@ public class TareaImp implements TareaRepository{
     public Tarea update(Tarea tarea, int id_tarea) {
         try (Connection conn = sql2o.open()) {
             conn.createQuery("UPDATE Tarea " +
-                            "SET titulo=:titulo, descripcion=:descripcion, fechaFin=:fechaFin, " +
-                            "estado=:estado, prioridad=:prioridad" +
-                            "WHERE id_tarea:id_tarea")
+                            "SET titulo = :titulo, descripcion = :descripcion, fechaFin = :fechaFin, " +
+                            "estado = :estado, prioridad = :prioridad " +
+                            "WHERE id_tarea = :id_tarea")
                     .addParameter("id_tarea", id_tarea)
                     .addParameter("titulo", tarea.getTitulo())
                     .addParameter("descripcion", tarea.getDescripcion())

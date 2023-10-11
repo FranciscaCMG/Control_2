@@ -6,8 +6,8 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/usuario',
-    name: 'usuario',
+    path: '/register',
+    name: 'register',
     component: () => import('../views/RegisterView.vue')
   },
   {
