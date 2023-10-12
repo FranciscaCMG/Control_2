@@ -34,7 +34,7 @@ Control_2-main -> - Demo ->  - src/main/java ->     - controllers
 ---------------------------------------------------------------------------------------------------------------
 ```
 # Prerequisitos
-
+ - Cargar la base de datos, creacionDeTablas.sql y ajustar la contraseña de la base de datos en el documento resources -> application.properties.
  - npm, java 17, maven, node js, vue, postgres, intellij.
 
 # INSTRUCCIONES DE USO
