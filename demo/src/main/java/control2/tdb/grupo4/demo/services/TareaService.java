@@ -22,4 +22,6 @@ public class TareaService {
     }
 
     public Tarea update(Tarea tarea, int id){return tareaRepository.update(tarea,id);}
+
+    public void delete(int id){tareaRepository.delete(id);}
 }

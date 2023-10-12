@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8086")
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 public class TareaController {
     @Autowired
@@ -40,6 +40,17 @@ public class TareaController {
         }
     }
 
+    @DeleteMapping("/delete-tarea/{id}")
+    public ResponseEntity<Object> eliminarTarea(@PathVariable int id) {
+        try {
+            tareaService.delete(id);
+            return ResponseEntity.ok().body(null);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(500).body(e.getMessage());
+        }
+    }
 
     @GetMapping("/tarea")
     public ResponseEntity<List<Tarea>> verTareas(){
