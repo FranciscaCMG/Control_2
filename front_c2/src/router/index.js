@@ -26,6 +26,11 @@ const routes = [
     component: () => import('../views/LoginView.vue')
   },
   {
+    path: '/',
+    name: '',
+    component: () => import('../views/LoginView.vue')
+  },
+  {
     
     path: '/editar-tarea/:id',
     name: 'editar-tarea',

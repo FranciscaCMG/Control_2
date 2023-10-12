@@ -41,6 +41,7 @@ export default {
 
       axios.post('http://localhost:8086/login', userData)
   .then(response => {
+    this.$router.push('/tareas')
     // Si el inicio de sesión es exitoso, response.data podría contener información del usuario
     console.log(response.data);
 
@@ -51,7 +52,7 @@ export default {
     localStorage.setItem('myCookie', cookie);
 
     // Redirigir a la siguiente vista o realizar otras acciones después del inicio de sesión
-    window.location.href = 'register';
+    window.location.href = 'tareas';
   })
   .catch(error => {
     // En caso de error, mostrar un mensaje de error de credenciales

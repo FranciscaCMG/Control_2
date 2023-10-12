@@ -56,7 +56,7 @@ export default {
         "fechaFin": this.newTarea.fechaFin,
         "estado": 'En curso',
         "prioridad": this.newTarea.prioridad,
-        "rut": "123"
+        "rut": "19999998-k"
       })
       this.$router.push('/tareas')
         .then(response => {
